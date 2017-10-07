@@ -1,0 +1,54 @@
+A Simple Page For Testing html2text
+
+# A simple page
+
+Here is a list:
+
+  * Google
+  * Apple
+  * Samsung
+
+Here is a table:
+
+Course| Midterm| Date  
+---|---|---  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015  
+COMP 139| Midterm #1| May 12, 2015  
+COMP 173| Midterm| May 21, 2015  
+COMP 139| Midterm #1| June 2, 2015
+
