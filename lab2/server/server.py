@@ -2,6 +2,15 @@ import socket
 import sys
 import math
 
+def intToByteArray(int):
+	int = socket.htonl(int)
+	bytes = bytearray()
+	bytes.append((int & 0xFF000000) >> 24)	
+	bytes.append((int & 0xFF0000) >> 16)
+	bytes.append((int & 0xFF00) >> 8) 
+	bytes.append(int & 0xFF)
+	return bytes
+
 port = sys.argv[1]
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -49,24 +58,7 @@ while True:
 				r *= values[i]
 		print(r)
 		
-		#server’s return datagram must be exactly 4 bytes
-		
-		r = socket.htonl(r & 0xFFFFFFFF)
-		
-		buffer = bytearray()
-		mask1 = 0xFF000000
-		mask2 = 0xFF0000
-		mask3 = 0xFF00
-		mask4 = 0xFF
-		
-		#"network order", which is big-endian
-		#first byte must be the MOST SIGNIFICANT byte of the return result
-		buffer.append((r & mask1) >> 24)
-		buffer.append((r & mask2) >> 16)
-		buffer.append((r & mask3) >> 8) 
-		#fourth byte must be the LEAST SIGNIFICANT byte of the return result
-		buffer.append(r & mask4)
-
+		buffer = intToByteArray(r & 0xFFFFFFFF)
 		s.sendto(buffer, address)
 		
 s.close()		

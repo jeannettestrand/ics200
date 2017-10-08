@@ -1,10 +1,27 @@
 import socket
 import sys
 
-input = sys.argv #python client.py localhost 12345 - 13 5 2 4
+def intToByteArray(int):
+	int = socket.htonl(int)
+	bytes = bytearray()
+	bytes.append((int & 0xFF000000) >> 24)	
+	bytes.append((int & 0xFF0000) >> 16)
+	bytes.append((int & 0xFF00) >> 8) 
+	bytes.append(int & 0xFF)
+	return bytes
+
+def byteArrayToInt(bytes):
+	int = ((bytes[0] << 24) & 0xFF000000) | ((bytes[1] << 16) & 0xFF0000) | ((bytes[2] << 8) & 0xFF00) | (bytes[3] & 0xFF)
+	int = socket.ntohl(int)
+	return int
+
+
+input = sys.argv #python client.py localhost 10010 - 13 5 2 4
 
 host = input[1]
 port = input[2]
+
+
 
 
 packet = bytearray()
@@ -35,30 +52,21 @@ else:
 		lastbyte = None 
 		i = 0
 		while i < len:
-		
 			if len % 2 != 0:
-				#last byte, if there is only one 4-bit integer remaining, will put the integer in the MOST SIGNIFICANT bits, and pad the LEAST SIGNIFICANT bits with all zeros
 				lastbyte = (values[len-1] << 4 | 0xFF)
 				len -= 1
-					
-			packet.append((values[i]<<4) | values[i+1])	#Each byte will hold two 4-bit integers
-			i += 2
-			
+			packet.append((values[i]<<4) | values[i+1])
+			i += 2	
 		if lastbyte:
 			packet.append(lastbyte)
 
 		s1 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		s1.connect((host, int(port)))
 		conf = s1.send(packet)
-		buffer = s1.recv(10)
+		buffer = s1.recv(1024)
 		
-		mask1 = 0xFF000000
-		mask2 = 0xFF0000
-		mask3 = 0xFF00
-		mask4 = 0xFF		
-		
-		result = ((buffer[0] << 24) & mask1) | ((buffer[1] << 16) & mask2) | ((buffer[2] << 8) & mask3) | (buffer[3] & mask4)
-		result = socket.ntohl(result)
+		result = byteArrayToInt(buffer)
+
 		if result > 2 ** 31:
 			result -= (2 ** 32)
 		
